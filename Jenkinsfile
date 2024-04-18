@@ -14,6 +14,15 @@ pipeline {
         booleanParam defaultValue: true, name: 'SEND_MAIL'
     }
     stages {
+        stage('Dynamic') {
+            when {
+               branch: "feature/multi/*"
+            }
+            steps {
+                    echo 'Dynamic'
+            }
+        }
+        
         stage('Download') {
             steps {
                 cleanWs()
